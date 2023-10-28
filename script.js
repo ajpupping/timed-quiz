@@ -1,7 +1,7 @@
 // To Do List
 
-// create questions array
-// object with question and then options array and answer property
+// create questions array [x]
+// object with question and then options array and answer property [x]
 
 //{ example
 //  question: what is the best way to listen to music?
@@ -42,3 +42,46 @@
 
 // easiest way to show high scores is to link a second html page
 // see slack note 
+
+
+var questions = ['question 0', 'question 1', 'question 2', 'question 3', 'question 4']
+
+var question0 = {
+    question: questions[0],
+    choices: ['choice A', 'choice B', 'choice C', 'choice D'],
+    answer: choices[2]
+}
+
+var question1 = {
+    question: questions[1],
+    choices: ['choice A', 'choice B', 'choice C', 'choice D'],
+    answer: choices[0]
+}
+
+var question2 = {
+    question: questions[2],
+    choices: ['choice A', 'choice B', 'choice C', 'choice D'],
+    answer: choices[3]
+}
+
+var question3 = {
+    question: questions[3],
+    choices: ['choice A', 'choice B', 'choice C', 'choice D'],
+    answer: choices[1]
+}
+
+var question4 = {
+    question: questions[4],
+    choices: ['choice A', 'choice B', 'choice C', 'choice D'],
+    answer: choices[1]
+}
+
+// displays questions one at a time, checks if answers are correct
+function startQuiz() {
+};
+
+// starts timer, obviously 
+function startTimer() {
+};
+
+getElementById("start")

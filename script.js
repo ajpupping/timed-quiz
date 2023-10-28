@@ -44,44 +44,91 @@
 // see slack note 
 
 
-var questions = ['question 0', 'question 1', 'question 2', 'question 3', 'question 4']
-
-var question0 = {
-    question: questions[0],
+var questions = [{
+    question: 'question 0',
     choices: ['choice A', 'choice B', 'choice C', 'choice D'],
-    answer: choices[2]
-}
-
-var question1 = {
-    question: questions[1],
+    answer: 'choice B'
+},
+{
+    question: 'question1',
     choices: ['choice A', 'choice B', 'choice C', 'choice D'],
-    answer: choices[0]
-}
-
-var question2 = {
-    question: questions[2],
+    answer: 'choice C'
+},
+{
+    question: 'question2',
     choices: ['choice A', 'choice B', 'choice C', 'choice D'],
-    answer: choices[3]
-}
-
-var question3 = {
-    question: questions[3],
+    answer: 'choice D'
+},
+{
+    question: 'question3',
     choices: ['choice A', 'choice B', 'choice C', 'choice D'],
-    answer: choices[1]
-}
-
-var question4 = {
-    question: questions[4],
+    answer: 'choice A'
+},
+{
+    question: 'question4',
     choices: ['choice A', 'choice B', 'choice C', 'choice D'],
-    answer: choices[1]
-}
+    answer: 'choice C'
+}];
+
+var startButton = document.getElementById('startButton');
+var timeEl = document.getElementById('time')
+var timeLeft;
+var timeInterval;
+var index = 0
+var answerEl = document.getElementById('answerContainer')
 
 // displays questions one at a time, checks if answers are correct
 function startQuiz() {
-};
+    timeLeft = 60
+    timeEl.textContent = timeLeft
+    document.getElementById('welcomeMessage').classList.add('hide')
+    renderQuiz()
+}
 
-// starts timer, obviously 
+function renderQuiz() {
+    document.getElementById('questionTitle').textContent = questions[index].question
+    answerEl.innerHTML = ''
+    questions[index].choices.forEach(function(choice){
+        var btn = document.createElement('button')
+        btn.textContent = choice
+        btn.onclick = checkAnswer
+        answerEl.append(btn)
+    })
+}
+
+function checkAnswer(event) {
+    console.log('clicked')
+    if(event.target.textContent !== questions[index].answer) {
+        timeLeft -= 10
+        if(timeLeft <= 0) {
+            timeLeft = 0
+            timeEl.textContent = timeLeft
+            endQuiz()
+        }
+    } // else, add feedback
+    index++ 
+    if(index===questions.length){
+        endQuiz()
+    } else {
+        renderQuiz()
+    }
+}
+
+// starts timer
 function startTimer() {
-};
+    timeInterval = setInterval(function() {
+        timeLeft--
+        timeEl.textContent = timeLeft
+        if(timeLeft <= 0) {
+            endQuiz()
+        }
+    }, 1000)
+    
+}
 
-getElementById("start")
+function endQuiz() {
+    clearInterval(timeInterval)
+}
+
+startButton.addEventListener('click', startQuiz)
+startButton.addEventListener('click', startTimer)

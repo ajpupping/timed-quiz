@@ -45,29 +45,29 @@
 
 
 var questions = [{
-    question: 'question 0',
-    choices: ['choice A', 'choice B', 'choice C', 'choice D'],
-    answer: 'choice B'
+    question: 'Which types of data can be stored in an array?',
+    choices: ['strings', 'booleans', 'numbers', 'all of these'],
+    answer: 'all of these'
 },
 {
-    question: 'question1',
-    choices: ['choice A', 'choice B', 'choice C', 'choice D'],
-    answer: 'choice C'
+    question: 'What type of data must be stored in quotes?',
+    choices: ['numbers', 'booleans', 'strings', 'functions'],
+    answer: 'strings'
 },
 {
-    question: 'question2',
-    choices: ['choice A', 'choice B', 'choice C', 'choice D'],
-    answer: 'choice D'
+    question: 'The code to be executed by a function is contained in?',
+    choices: ['curly brackets', 'parentheses', 'quotes', 'commas'],
+    answer: 'curly brackets'
 },
 {
-    question: 'question3',
-    choices: ['choice A', 'choice B', 'choice C', 'choice D'],
-    answer: 'choice A'
+    question: 'Which tool can be used for debugging?',
+    choices: ['console log', 'bool prop', 'python', 'terminal'],
+    answer: 'console log'
 },
 {
-    question: 'question4',
-    choices: ['choice A', 'choice B', 'choice C', 'choice D'],
-    answer: 'choice C'
+    question: 'Where in the index.html file should the script link be placed?',
+    choices: ['meta', 'header', 'body', 'footer'],
+    answer: 'body'
 }];
 
 var startButton = document.getElementById('startButton');
@@ -90,6 +90,7 @@ function renderQuiz() {
     answerEl.innerHTML = ''
     questions[index].choices.forEach(function(choice){
         var btn = document.createElement('button')
+        btn.className = 'button'
         btn.textContent = choice
         btn.onclick = checkAnswer
         answerEl.append(btn)
@@ -128,6 +129,7 @@ function startTimer() {
 
 function endQuiz() {
     clearInterval(timeInterval)
+    document.getElementById('questionContainer').classList.add('hide')
 }
 
 startButton.addEventListener('click', startQuiz)

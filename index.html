@@ -15,9 +15,19 @@
         <h3>Click start to begin the quiz</h3>
         <button type="button" id="startButton">Start</button>
     </section>
-    <section class="questionContainer" id="questionContainer">
-        <h2 id="questionTitle"></h2>
-        <div id="answerContainer"> </div>
+    <section class="hide" id="showQuestions">
+        <div class="questionContainer" id="questionContainer">
+            <h2 id="questionTitle"></h2>
+            <div id="answerContainer"> </div>
+        </div>
+    </section>
+    <section class="hide" id="showScores">
+        <div id="highScores">
+            <h1>High Scores</h1>
+        </div>
+        <div class="playAgainContainer">
+            <button type="button" id="playAgainButton">Play Again</button>
+        </div>
     </section>
     <script src="./script.js"></script>
 </body>

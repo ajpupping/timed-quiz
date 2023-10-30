@@ -1,48 +1,24 @@
 // To Do List
+// save score to local storage
+// store high scores in an array
+// enter name 
+// display high score list
+// clear high score list
 
-// create questions array [x]
-// object with question and then options array and answer property [x]
 
-//{ example
-//  question: what is the best way to listen to music?
-//  options: [spotify, apple music, physical media, radio]
-//  answer: apple music
-//}
+var startButton = document.getElementById('startButton');
+var timeEl = document.getElementById('time');
+var timeLeft;
+var timeInterval;
+var currentQuestion = 0;
+var answerEl = document.getElementById('answerContainer');
+var playAgainEl = document.getElementById('playAgainButton');
+var nameInput = document.getElementById('name-input');
+var playerName = document.querySelector('#player-name');
+var scoreListEl = document.getElementById('score-list');
+var clearEl = document.getElementById('clearButton');
 
-//currentQuestion = 0
-
-// questions[currentQuestion].question, questions[currentQuestion].answer
-
-// create question element
-// append option elements
-// event handler => need to check if clicked option is answer
-// does target value === answer
-
-// where are we in our question list
-// need to track where with the index
-
-// no jquery or bootstrap for this assignment 
-
-// does not matter if it is fair
-// time left is the score 
-// wrong answer time penalty should make it worth it to answer correctly
-
-// need a function for starting the timer 
-// need a function for starting the questions 
-// both those get called on quiz start 
-
-// at the end of quiz save time score and display high scores 
-// need to ask for user input to name high score 
-// local storage
-
-// first focus on showing one question and then the next question 
-// do not need to shuffle questions 
-// does not need to be mobile responsive 
-// just clean and simple design 
-
-// easiest way to show high scores is to link a second html page
-// see slack note 
-
+var highScores = [];
 
 var questions = [{
     question: 'Which types of data can be stored in an array?',
@@ -65,18 +41,10 @@ var questions = [{
     answer: 'console log'
 },
 {
-    question: 'Where in the index.html file should the script link be placed?',
+    question: 'Where in the html file should the script link be placed?',
     choices: ['meta', 'header', 'body', 'footer'],
     answer: 'body'
 }];
-
-var startButton = document.getElementById('startButton');
-var timeEl = document.getElementById('time')
-var timeLeft;
-var timeInterval;
-var index = 0
-var answerEl = document.getElementById('answerContainer')
-var playAgainEl = document.getElementById('playAgainButton')
 
 // displays questions one at a time, checks if answers are correct
 function startQuiz() {
@@ -88,11 +56,11 @@ function startQuiz() {
 
 function renderQuiz() {
     document.getElementById('showQuestions').classList.add('show')
-    document.getElementById('questionTitle').textContent = questions[index].question
+    document.getElementById('questionTitle').textContent = questions[currentQuestion].question
     answerEl.innerHTML = ''
-    questions[index].choices.forEach(function (choice) {
+    questions[currentQuestion].choices.forEach(function (choice) {
         var btn = document.createElement('button')
-        btn.className = 'button'
+        btn.className = 'answerButton'
         btn.textContent = choice
         btn.onclick = checkAnswer
         answerEl.append(btn)
@@ -100,16 +68,16 @@ function renderQuiz() {
 }
 
 function checkAnswer(event) {
-    if (event.target.textContent !== questions[index].answer) {
+    if (event.target.textContent !== questions[currentQuestion].answer) {
         timeLeft -= 10
         if (timeLeft <= 0) {
             timeLeft = 0
             timeEl.textContent = timeLeft
             endQuiz()
         }
-    } // else, add feedback
-    index++
-    if (index === questions.length) {
+    }
+    currentQuestion++
+    if (currentQuestion === questions.length) {
         endQuiz()
     } else {
         renderQuiz()
@@ -127,11 +95,25 @@ function startTimer() {
     }, 1000)
 }
 
+// hides questions and shows high scores
 function endQuiz() {
     clearInterval(timeInterval)
     document.getElementById('questionContainer').classList.add('hide')
     document.getElementById('showScores').classList.add('show')
 }
+
+function nameInput() {
+}
+
+function storeScores() {
+}
+
+function renderScores() {
+}
+
+function clearScores() {
+}
+
 
 function playAgain() {
     location.reload();
@@ -140,3 +122,4 @@ function playAgain() {
 startButton.addEventListener('click', startQuiz)
 startButton.addEventListener('click', startTimer)
 playAgainEl.addEventListener('click', playAgain)
+clearEl.addEventListener('click', clearScores)

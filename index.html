@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timed Quiz</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
     <header>
         <h2 id="timeRemaining">Time Remaining: <span id="time"></span></h2>
@@ -18,12 +20,20 @@
     <section class="hide" id="showQuestions">
         <div class="questionContainer" id="questionContainer">
             <h2 id="questionTitle"></h2>
-            <div id="answerContainer"> </div>
+            <div id="answerContainer"></div>
         </div>
     </section>
     <section class="hide" id="showScores">
-        <div id="highScores">
-            <h1>High Scores</h1>
+        <div id="record-score">
+            <form id="name-input" method="POST">
+                <label for="player-name">Enter your name: </label>
+                <input type="text" name="player-name" id="player-name" />
+            </form>
+        </div>
+        <div id="highScores">    
+            <h1>High Scores: </h1>
+            <ol id="score-list"></ol>
+            <button id="clearButton">Clear</button>
         </div>
         <div class="playAgainContainer">
             <button type="button" id="playAgainButton">Play Again</button>
@@ -31,4 +41,5 @@
     </section>
     <script src="./script.js"></script>
 </body>
+
 </html>

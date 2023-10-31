@@ -6,6 +6,8 @@ The purpose of this project was to create an interactive timed quiz, using javas
 
 I learned how to set a timer, use an event listener, and hide or show elements on demand. 
 
+I also learned about local storage. I had difficulty getting the scores to display on the page, but I was able to save the high scores array to the console log. 
+
 
 ## Usage 
 
@@ -21,7 +23,7 @@ If the player gets a question wrong, 10 seconds of time will be subtracted as a 
 
 ![a screenshot of the high scores displayed and name entry form](/images/scores-screenshot.png)
 
-After the quiz ends, the player may enter their name and view their high scores. 
+After the quiz ends, the player should be able to enter their name and view their high scores. 
 
 
 ## Credits 
